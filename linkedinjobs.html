@@ -1,0 +1,170 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Generic - Phantom by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title"></span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="linkedinjobs.html">Scraping Dutch Data Analyst Jobs</a></li>
+							<li><a href="boatprice.html">Boat Price Prediction</a></li>
+							<li><a href="spaceshipproject.html">Spaceship Titanic Passanger Classification</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>Scraping and Analyzing Junior Data Analyst Job Listings in the Netherlands</h1>
+							<span class="image main"><img src="images/LinkedInJobs/cropped_amsterdam.jpg" alt=""/></span>
+								<p>Web scraping has become a popular tool for extracting data from websites for various purposes. In this project, LinkedIn was scraper to gather information about data analyst jobs in the Netherlands. The extracted data was then used to gain insights into the most commonly searched for skills, the most common industries, types of work, etc... Understanding the most sought-after skills and job types can help job seekers tailor their applications and make informed career decisions. The aim of this project is to provide such insights based on data gathered through web scraping, mostly for my personal use and need.</p>
+							<h2>Problem Definition</h2>
+								<p>The country of Netherlands, with its thriving tech scene and innovative business cultures, has caught my attention as a potential destination to pursue my career in data analytics.
+									The country's unique blend of forward-thinking policies, entrepreneurial spirit, and diverse cultural landscape makes it an exciting place to work and live.
+									For this reason I decided to find out where most of the job vacancies are located, what type of workplace and type of work dominate in the country, which indutries I should look for and what skills I should sharpen as a Junior Data Analyst.
+									Some of the questions I asked for this project are:
+									<li>What are the most sought after skills for a junior data analyst?</li>
+									<li>What industry has the most need for data analysts?</li>
+									<li>What are some of the benefits offered?</li>
+									<li>Where should I look for my job and where is the highest propability of finding a job?</li>
+								</p>
+								
+							<h2>Tools/Libraries used</h2>
+								<p>For this project I decided to go for the more traditional data analyst tools and relying more on Microsoft Excel and Power BI to do the cleaning and analysis instead of Python.
+									I mostly used:
+									<li>Selenium</li>
+									<li>BeautifulSoup</li>
+									<li>Numpy</li>
+									<li>Pandas</li>
+									<li>Excel</li>
+									<li>Power BI</li>
+								</p>
+								
+							<h2>Data Source and Data Description</h2>
+								<p>This is a standalone dataset I collected by scraping LinkedIn jobs with the keyword "Junior Data Analyst" in Netherlands. Scraping was done with <b>Selenium</b> as the website has dinamic elements which required flexibility.
+									For this reason I could't do it with Scrapy, but I also wasnted more practice with Selenium as it is a great tools for dynamic web scraping for small to medium datasets. Although Selenium was used to grab the full html of the pages, the scraping of the individual
+									elements was done with <b>BeautifulSoup</b> since the elements itself were pretty simple and it saved me a lot of time. BeautifulSoup is ideal for simple scraping jobs. Here you can find the full code for both the <a href="https://github.com/teolj96/Dutch_Jobs_repo/blob/main/JobDownloader.py" target="_blank">HTML downloader</a> and the <a href="https://github.com/teolj96/Dutch_Jobs_repo/blob/main/JobScraper.py" target="_blank">scraper</a>.
+								</p>
+								<p>The <a href="https://github.com/teolj96/Dutch_Jobs_repo/blob/main/LinkedInCleaned2.csv" target="_blank">dataset</a> itself is not very large and contains 200 jobs. It is the most I was able to scrape with multiple tries before getting blocked on LinkedIn. They don't like having their page scraper apparently. Have I decided to do the scraping immediately with Selenium I would propably have gotten blocked earlier.
+									The dataset consists of the following columns:
+									<li><b>Job Title</b> - the name of the job vacancy, the position of the job</li>
+									<li><b>Company Name</b> - the hiring company name</li>
+									<li><b>City</b> - the city the job is located</li>
+									<li><b>Region</b> - the region of the city</li>
+									<li><b>Workplace Type</b> - can either be on-site, hybrid or remote</li>
+									<li><b>Work Type</b> - can either be as contract, full-time, part-time or temporary, althrough this was later not used in the analysis as 95% of the job listings were full time</li>
+									<li><b>Experience</b> - experience level required for the job, such as a junior position, mid-senior position, associate position, contract or director position</li>
+									<li><b>Company Size</b> - the size of the company in terms of employees</li>
+									<li><b>Industry</b> - the industry the company is in</li>
+									<li><b>Job Description</b> - the full job description, used to scrape other information such as the skills needed for the job I.e. "Job Skills" column</li>
+									<li><b>Job Link</b> - the link for the vacancy, useful for quick access</li>
+									<li><b>Job Skills</b> - the skills listed in the job description</li>
+								</p>
+								
+							<h2>Data cleaning and transformation</h2>
+								<p>Scraped data is always full of errors, null values and wierd symbols that the program can't recognize especially since some of the vacancies are in a foreign language. Most of the cleaning was done in Excel with Power Query.
+									Majority of the cleaning included <b>removing excess words</b> that added no extra meaning, <b>removing extra spaces</b>, <b>standardizing names and titles</b> who had the same or similiar meaning, <b>renaming dutch titles into english</b>,
+									and overall normalizing the data.
+								</p>
+								<p>The biggest challenge was to collect information from the job description which contained a lot of the required skills needed for the job. By extracting keywords from the description it would be possible to get insight which tools were the most searched for this position.
+									For this first a list of most common and popular tools were named.
+								</p>
+									<pre><code>tools = ['sql', 'excel', 'python', 'r', 'tableau', 'powerbi', 'sas', 'jupyter', 'looker', 'spark', 'aws', 'azure', 'hadoop', 'alteryx', 'rapidminer', 'spss', 'dax', 'matlab', 'power bi']</code></pre>
+								<p>
+									After that, we create a pattern which is made of those words in the list, basically creating a long string. Then we use the "str" function to search the description for the pattern.
+									A new column is created which contains those skills/tools for each unique row. The last step is to iterate through the skill lists and remove the duplicates because sometimes the same skill is mentioned multiple times.
+								</p>
+									<pre><code>pattern =  r"(?:^|\s+)(" + "|".join(str(v) for v in tools) + r")(?:\s+|$)"</code></pre>
+									<pre><code>df['Job_skills'] = df['Job Description'].str.findall(pattern)</code></pre>
+									<pre><code>def func(x):
+	return list(dict.fromkeys(x))
+
+df['Job_skills'] = df['Job_skills'].apply(lambda x:func(x))
+									</code></pre>
+							<h2>Interractive dashboard</h2>
+							<p>Power BI is a great tool for creating dynamic and simple dashboards. The next few pictures show a few interactive elements through which the user is able to filter data and gain deeper insight about the various job opportunities in the Netherlands.
+								Each element is able to filter another element which provides more information about another table or graph. Overall I decided to show the company industries, the most in-demand skills, the share of workplace type (remote, hybrid or on-site), a map of netherlands showing the frequency of vacanies by cities, jobs by experience level and a table showing the job vacancy with the job link for easy access.
+								Below are a few examples of report in action with its interactive elements.
+							</p>
+								<img src="images/LinkedInJobs/1.gif", class="center">
+								<img src="images/LinkedInJobs/3.gif", class="center">
+								<img src="images/LinkedInJobs/4.gif", class="center">
+								<img src="images/LinkedInJobs/5.gif", class="center">
+							<h2>Conclusion and key takeaways</h2>
+								<p>Today LinkedIn is the biggest platform for job postings and job hunting and thus contains a great number of data on different job vacancies. Scraping that data is a bit tricky though since LinkedIn really does not like having its data scraped.
+									Non the less I was able to get the information I wanted even on a fairly smaller dataset. As somebody looking for a job in the Netherlands as a Junior Data Analyst I was able to extract some key takeaways from the project:
+									<li><b>Amsterdam</b> is the city with the highest number of open Data Analyst positions, which might not be so suprising since it is the biggest city</li>
+									<li>The most demanded position is at the <b>Mid-Senior level</b>, and then at the Entry level</li>
+									<li>For an Entry level Data Analyst, <b>SQL</b>, <b>Python</b> and <b>Power BI</b> are the most in-demand skills</li>
+									<li>It seems that <b>"Staffing and recruiting"</b> (HR) and <b>"IT Services"</b> are the industries that most require Data Analysts</li>
+									<li>Most Data Analyst jobs are <b>on-site</b> or <b>hybrid</b> and as the experience level increases the scale shifts more on the hybrid/remote side</li>
+								</p>
+							<h2>Weaknesses and what can be improved</h2>
+								<p>
+									<li>The dataset is fairly small, scraping more data might be the way to go although I got too many accounts already banned</li>
+									<li>The dataset might be supplemented with some extra external data to provide deeper insight</li>
+									<li>Although a lot of job descriptions didn't provide the salary, it might be worth scraping the salary non the less</li>
+								</p>
+							
+						</div>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<section>
+								<h2>Follow</h2>
+								<ul class="icons">
+									<li><a href="https://www.linkedin.com/in/teo-ljubicic/" class="icon brands style2 fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
+									<li><a href="https://github.com/teolj96" class="icon brands style2 fa-github" target="_blank"><span class="label">GitHub</span></a></li>
+									<li><a href="mailto:tljubicic96@gmail.com" class="icon solid style2 fa-envelope" target="_blank"><span class="label">Email</span></a></li>
+								</ul>
+							</section>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

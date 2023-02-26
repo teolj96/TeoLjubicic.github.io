@@ -1,0 +1,197 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Generic - Phantom by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title"></span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="linkedinjobs.html">Scraping Dutch Data Analyst Jobs</a></li>
+							<li><a href="boatprice.html">Boat Price Prediction</a></li>
+							<li><a href="spaceshipproject.html">Spaceship Titanic Passanger Classification</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>Spaceship Titanic Passanger Classification</h1>
+							<span class="image main"><img src="images/SpaceshipTitanic/tumblr_debec6caf9c8a009a73207228ffde853_aacff5ed_540.gif" alt=""/></span>
+							<p>In this data science and machine learning project, I analysed a dataset about spaceship passengers and built a predictive model to determine if a passenger could board the ship. By sifting through complex data, I uncovered insights about why some passengers were denied boarding.
+								In the end, the predictive model I built was able to accurately determine which passengers could board the spaceship, ensuring the safety of all on board. Click <a href="https://github.com/teolj96/Data-Science-Portfolio/blob/main/Spaceship%20Titanic%20(GridSearch%2C%20Pipeline%2C%20LogReg%2C%20XGB%2C%20SVM%2C%20NN%2C%20RandomForest%2C).ipynb" target="_blank">here</a> for the full Juypter Notebook link of the project.
+							</p>
+							<h2>Problem Definition</h2>
+								<p>In the year 2307, the spaceship Titanic was on a routine journey through the galaxy when disaster struck. The ship was hit by an unexpected meteor shower, causing severe damage to the hull and critical systems. The crew immediately activated the emergency protocols, initiating the evacuation of all passengers and crew.
+									The goal of the project is to determine a pattern to see if some passengers have a certain advantage or disadvantage of boarding the evacuation ships and create a machine learning model which could predict that. Some of the question asked before the analysis are:
+									<li>What class of people have the advantage of being boarded?</li>
+									<li>Is it possible to successfully predict which people will be boarded?</li>
+									<li>What are some of the features which determine the likelihood of being boarded?</li>
+								</p>
+							<h2>Tools/Libraries used</h2>
+								<p><li>Pandas</li>
+									<li>Numpy</li>
+									<li>Matplotlib</li>
+									<li>Seaborn</li>
+									<li>Scikit-Learn</li>
+									<li>Tensorflow</li>
+								</p>
+								
+							<h2>Data Source and Data Description</h2>
+								<p>The Spacehip Titanic dataset is a <a href="https://www.kaggle.com/c/spaceship-titanic/data">Kaggle</a> competition dataset based on the famous original Titanic dataset, this time set in future. The dataset is described as follows:
+									<li><b>PassengerId </b>- A unique Id for each passenger</li>
+									<li><b>HomePlanet </b>- The planet the passenger departed from</li>
+									<li><b>CryoSleep </b>- Indicates whether the passenger elected to be put into suspended animation for the duration of the voyage</li>
+									<li><b>Cabin </b>- The cabin number where the passenger is staying</li> 
+									<li><b>Destination </b>- The planet the passenger will be debarking to</li>
+									<li><b>Age </b>- The age of the passenger</li>
+									<li><b>VIP </b>- Whether the passenger has paid for special VIP service during the voyage</li>
+									<li><b>RoomService, FoodCourt, ShoppingMall, Spa, VRDeck</b>- Amount the passenger has billed at each of the Spaceship Titanic's many luxury amenities</li>
+									<li><b>Name </b>- The first and last names of the passenger</li>
+									<li><b>Transported </b>- Whether the passenger was transported to another dimension. This is also the target variable which is being predicted</li>
+								</p>
+							<h2>Exploratory Data Analysis</h2>
+								<p>Throughout the EDA I focused mostly on figuring what are the main features which would make a person more likely to be transported. All of the EDA was done in Python with Matplotlib and Seaborn libraries.
+									Looking at the total count of people by their homeplanet of origin it is possible to conclude that most of the people are from the planet "Earth" and thus a lot of those people were able to be transported.
+									But people from the planet "Europa" statistically had a bigger change of surviving as almost twice ammount of people managed to be transported.</p>
+									<img src="images/SpaceshipTitanic/homeplanet_transp.jpg">
+								<p>Another interesting insight is the fact that the majority of the people who were in cryosleep during the incident were succesfully transported. Perhaps the passengers who were in cryosleep has an advantage
+									of being transported before anyone else. Whatever is the case it turns out to be an advantage of being put into cryosleep during travel.</p>
+									<img src="images/SpaceshipTitanic/cryosleep_transp.jpg">
+								<p>The next graph reveals that a higher proportion of younger people (under 20 years) were successfully tranported which suggest children and teens had an advantage of being transported than other people.</p>
+									<img src="images/SpaceshipTitanic/age_transp.jpg">
+								<p>In the next few graphs I will take a look at the spendings of the passengers, trying to figure out if the richer people has some kind of advantage of being transported.
+									It turns out that people from the planet "Europa" were spending the most, suggesting that the planet is inhibited by the wealthier passengers in comparison to the other planets, having also
+									in mind that most people are not from planet "Europa". This also correlates with the first insight where people from the planet "Europa" has a bigger chance of being transported. This all suggest that
+									the wealthier people have an advantage of being successfully transported.</p>
+									<img src="images/SpaceshipTitanic/spending_homeplanet.jpg"> <img src="images/SpaceshipTitanic/spending_transp.jpg">
+								<p>The last step before making a machine learning model is to take a look at the correlations between the variables and make sure there are no higly correlated variables which
+									could cause issues with the model. But it turns out all of the varibles have a very low correlation between each other and thus we are accepting them into out model.</p>
+									<img src="images/SpaceshipTitanic/corr_matrix.jpg">
+							<h2>Data Modelling</h2>
+								<p>There are some categorical variables in the dataset which need to be transformed into a data type which the machine can understand. For that I will use the function .get_dummies() to turn
+									each category into a seperate column with a 1 or 0 in each row indicating if the variable is present in the row.</p>
+								
+									<pre><code>planet_train = pd.get_dummies(train_df['HomePlanet'],drop_first=True)
+planet_test = pd.get_dummies(test_df['HomePlanet'],drop_first=True)
+
+destination_train = pd.get_dummies(train_df['Destination'],drop_first=True)
+destination_test = pd.get_dummies(test_df['Destination'],drop_first=True)
+
+cabin_d_train = pd.get_dummies(train_df['CabinDeck'],drop_first=True)
+cabin_d_test = pd.get_dummies(test_df['CabinDeck'],drop_first=True)
+
+cabin_s_train = pd.get_dummies(train_df['CabinSide'],drop_first=True)
+cabin_s_test = pd.get_dummies(test_df['CabinSide'],drop_first=True)</code></pre>
+								
+								<p>After that I drop all the unecessary columns, seperate the X and the Y variable and do a train test split using the sklearn function.
+									For this model I used a <b>80/20 split</b> where 80% of the data is the training data while 20% is the testing data. As for the machine learning models, for this project I toyed with all kinds of models
+									seeing what results I will get. In total I compared a <b>Logistic Regression</b>, <b>Random Forest Classifier</b>, <b>SVM</b>, <b>XGB Classifier</b> and <b>ANNs</b>.
+									All of the models did pretty well, and a lot of them had a very similiar final score. The scoring table is as follows: 
+								</p>
+								<table style="width:40%">
+									<tr>
+										<th>Model</th>
+										<th>Accuracy</th>
+									</tr>
+									<tr>
+										<td>Logistic Regression</td>
+										<td>0.7779</td>
+									</tr>
+									<tr>
+										<td>Random Forest</td>
+										<td><b>0.8033</b></td>
+									</tr>
+									<tr>
+										<td>SVM</td>
+										<td>0.7612</td>
+									</tr>
+									<tr>
+										<td>XGB Classifier</td>
+										<td><b>0.8039</b></td>
+									</tr>
+									<tr>
+										<td>ANN</td>
+										<td>0.8016</td>
+									</tr>
+								</table>
+								<p>As we can see the Random Forest Classifier, XGB Classifier and ANN all did very well in predicting if a passenger will get transported or not,
+									with an average score of around <b>0.80</b>.
+								</p>
+							<h2>Conclusion and key takeaways</h2>
+								<p>Through data analysis we were able to gather interesting insight about a persons chances of being transported from the spaceship Titanic.
+									If I was a passenger on the spaceship I would have better chances of being transported if:
+									<li>I was from the planet Europa</li>
+									<li>I was in the state of cryosleep during the travel</li>
+									<li>I was under 20 years old</li>
+									<li>I was from a wealthier class of passengers</li>
+								</p>
+							<h2>Weaknesses and what can be improved</h2>
+								<p>
+									<li>Removing outliers from the "spendings" columns</li>
+									<li>Transforming the "spendings" columns into categorical columns so we can classify passenger into poorer of wealthier classes</li>
+									<li>Reducing the total number of features</li>
+									<li>Doing a dimension reduction</li>
+								</p>
+							
+						</div>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<section>
+								<h2>Follow</h2>
+								<ul class="icons">
+									<li><a href="https://www.linkedin.com/in/teo-ljubicic/" target="_blank" class="icon brands style2 fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									<li><a href="https://github.com/teolj96" target="_blank" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="mailto:tljubicic96@gmail.com" target="_blank" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+								</ul>
+							</section>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
