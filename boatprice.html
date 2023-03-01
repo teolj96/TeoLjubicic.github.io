@@ -1,0 +1,192 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Boat Price Prediction Project</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">TEO LJUBICIC | JUNIOR DATA ANALYST</span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="linkedinjobs.html">Scraping Dutch Data Analyst Jobs</a></li>
+							<li><a href="boatprice.html">Boat Price Prediction</a></li>
+							<li><a href="spaceshipproject.html">Spaceship Titanic Passanger Classification</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>Boat Price Prediction Project</h1>
+							<span class="image main"><img src="images/BoatPricePrediction/wallpaper_boat.jpg" alt=""/></span>
+								<p>Boats and the sea have always been a passion of mine. There's something about the feeling of the wind in your hair, the sound of the waes and the freedom of being out on the open sea water that just can't be beaten. As someone who has spent countless hours researching boats and dreaming about owning one in the future, I've alwaysy been curious about how mcuch different boats cost and what factors impact their prices. That's why i decided to combine my love for boats with my interest in machine learning to create a boat price prediction model in Python. By using historical data and advanced algorithms, I hope to develop a tool that will help me make more informed decisions about buying and selling boat one day.</p>
+							<h2>Problem Definition</h2>
+								<p>There are many factors that can impact the price of a boat, including its age, brand, model, condition, location, size and other factors. To be able to assess objectively the value of a boat by its characteristics and country it will be useful to create a broad picture of the market and make an assuption based on real market data. To address this, the project aims to get data from the web, do a deep exploratory data analysis and then create a machine learning model that can predict the price of a boat based on a arange of relevant factors. Some of the questions asked before the analysis are:
+									<li>What is the average boat price in my country?</li>
+									<li>What is the average boat size in my country?</li>
+									<li>How much does the boat price vary by size?</li>
+									<li>What boat brands are most commonly found of the market?</li>
+									<li>What boat brands are most expensive and which are more afordable?</li>
+							</p>
+							<h2>Tools/Libraries used</h2>
+								<p>
+									<li>Scrapy</li>
+									<li>Numpy</li>
+									<li>Pandas</li>
+									<li>Matplotlib</li>
+									<li>Seaborn</li>
+									<li>Sklearn</li>
+									<li>Tensorflow</li>
+								</p>
+							<h2>Data Source and Data Description</h2>
+								<p>This is a standalone dataset collected by scraping the boat24.com website using Scrapy. I selected this website as it is a popoular onlne marketplace for boats, with a wide range of listings for different types of vessels from various countries around the world. By collecting the data myself, I was able to ensure that the dataset was up-to-date and comprehensive, and that it contained all the information necessary for training a machine learning model. The code for the web scraper is avaliable <a href="https://github.com/teolj96/Boats_Project_repo/blob/main/boats.py" target="_blank">here</a>, as well as the original  <a href="https://github.com/teolj96/Boats_Project_repo/blob/main/boats_final_2.csv" target="_blank">csv file</a> of the data. The original data contains the following columns: 
+									<li><b>Year Built</b> - The year in which the boat was built</li>
+									<li><b>Condition</b> - The condition of the boat at the time of sale</li>
+									<li><b>Length x Width</b> - Both the length and the width of the boat in meters. This was later transformed into two seperate columns</li>
+									<li><b>Material</b> - The material which the boat is made of</li>
+									<li><b>Certified No. of Persons</b> - The number of persons for which the boat is registered</li>
+									<li><b>No. of Cabins</b> - The total number of sleeping cabins in the boat</li>
+									<li><b>Propulsion</b> - The propulsion of the boat, not to be confused with the engine</li>
+									<li><b>Engine</b> - The engine brand in the boat</li>
+									<li><b>Engine Performance</b> - The power of the boat's engine, defined in horsepower</li>
+									<li><b>Engine Hours</b> - The number of hours made by the engine, though this columns was dropped due to high % of null values</li>
+									<li><b>Model</b> - The brand of the boat, typically the manufacturer</li>
+									<li><b>Type </b>- The boat type, such as a sailing yacht or a motor yacht</li>
+									<li><b>Location </b>- The location of the boat</li>
+									<li><b>Price </b>- The boat's price in british pounds</li>
+							</p>
+							<h2>Exploratory Data Analysis</h2>
+								<p>The original dataset contained around 12000 rows of data but through data cleaning that ammount was reducted to exactly <b>8971</b> rows of data, each containing information about a particular boat ad.
+								Some of the columns after cleaning still contained a lot of null values and thus will not be used in the final prediction but will still be used in the EDA to gain valuable insight.
+								First we will look at some of the basic characteristics to see if we can gain some insight. </p>
+									<img src="images/BoatPricePrediction/location_freq.jpg">
+								<p>It turns out that most of the boats are located in Germany which can suggest that the website might me most popular there, but it can also suggest that Germany is a highly popular sailing country.
+								My home country, Croatia, is located at the 6th place, which is impressive for such a small country but highly dependant on its nautical tourism. Croatia being a country with a smaller population and lower standard of living might suggest that the boat prices might be lower than average, thus making it a good purchasing option.</p>
+									<img src="images/BoatPricePrediction/condition.jpg">
+								<p>Also, we can see that most of the boats are either in "good condition" or "as new" meaning they are propably less than 10 years old and in a good shape.</p>
+									<img src="images/BoatPricePrediction/boat_type.jpg"><img src="images/BoatPricePrediction/price_type.jpg">
+								<p>The most popular boat types are motor boats and sailing boats, making for a great share of ads. The rest of the boats are all mostly variations of different motors boats such as speed boats, hardtops, flybridges and so on...
+								What I was mostly interested is the difference between sailing boats and motor boats, since a large potion of charter boats are sailing boats, but as it turns out they are not the most common boat type on the market.
+								On the other hand we can see a huge price difference between larger boat categories. There are a few ads for very large boats such as Superyachts which skew the price distribution by a lot.</p>
+									<img src="images/BoatPricePrediction/boat_model.jpg"><img src="images/BoatPricePrediction/price_model_2.jpg">
+								<p>As for the most popular brand of boat, that turns out to be Janneau, Beneteau and Bavaria, which in my opinion is the said reason that there are a lot of charter boats on the market, with the most popular brands being the ones mentioned. After that the next most popular brand is Sunseeker which is popular for its luxurious motor boats. Even though Sunseeker is not the most popular brand, we can notice that it is on average the one with the highest price.</p>
+									<img src="images/BoatPricePrediction/engine.jpg"><img src="images/BoatPricePrediction/material.jpg"><img src="images/BoatPricePrediction/propulsion_count.jpg" width="550"><img src="images/BoatPricePrediction/price_material.jpg">
+								<p>Next we will take a look at different boat specs such as the engines they use, propulsion type, etc... The most popular brand of engine is the <b>Volvo Penta</b>, which is a distingushed engine manufacturer for a very long time. A lot of the said charter boats use these engines and they often the fan favorite. 
+								The by far most common material boats are made of is <b>GRP</b> (Glass-fibre Reinforced Plastic) but on the other hand we can see that the most expensive boats are made out of carbon fibre and aluminum. Carbon fibre is a notoriously strong material for sailing yachts while aluminium is often used to make superyachts.
+								As for the propulsion, the most common propulsion type is the <b>Inboard Direct-Drive</b>, and the Outboard engine.</p>
+								<p>Enough of the EDA for now, let's get to machine learning.</p>
+							<h2>Data Modelling</h2>
+									<img src="images/BoatPricePrediction/corr_matrix.jpg" width="500"><img src="images/BoatPricePrediction/price_len.jpg" width="450">
+								<p>Let's first take a look at the correlation matrix. We can notice that length and width are highly correlated, which kind of makes sense because increasing the general boat size means making the boat both longer and wider.
+								I could have removed the boat width completely since one size feature might be enough but I didn't since the correlation isn't extremely high. We can notice that the boat size might be the strongest factor determining the price.
+								We can notice a trend that with the increase of the boat size the price increases drastically after around 30 meters, for the most part.</p>
+								<p>I decided to compare a basic linear regression model and neural networks. The main reason I chose linear regression for this is for the simplicity of interpreting the model, which ANNs aren't ideal for. I evaluated the models using MAE and MSE even through MSE but be the better option because of outliers in the data.
+								In total I made one linear regression model and three artificial neural networks, each having their complexity increased in comparison to the last one.
+								</p>
+							<table>
+								<tr>
+									<th>Model</th>
+									<th>MAE</th>
+									<th>MSE</th>
+								</tr>
+								<tr>
+									<td>Linear Regression</td>
+									<td>45667.90</td>
+									<td>5200817068.73</td>
+								</tr>
+								<tr>
+									<td>ANN (Input: 121, Hidden: 121, Output: 1)</td>
+									<td>34381.004</td>
+									<td>9830265000.0</td>
+								</tr>
+								<tr>
+									<td>ANN (Input: 121, Hidden: 121, Hidden: 121, Output: 1)</td>
+									<td>34995.54</td>
+									<td>14412964000.0</td>
+								</tr>
+								<tr>
+									<td>ANN (Input: 121, Hidden: 242, Output: 1)</td>
+									<td><b>34628.77</b></td>
+									<td><b>10111264000.0</b></td>
+								</tr>
+							</table>
+							<p>Overall, ANN model with increased number of neurons but fewer layers performed the best on this data.</p>
+							<h2>Conclusion and key takeaways</h2>
+								<p>Being an undecisive buyer, this helped me figure out what works more for me. I would like to own a sailing boat 11m long and about 3.6m wide with 2 cabins in total with other features randomized. With the ANN model I got the price of 109967.93 GBP, which is reasonable for a boat that size.</p>
+								<p><b>Key takeaways are:</b>
+									<li>Jeanneau is the most popular brand of boats, followed by Beneteau and Bavaria. This makes sense because they are the most popular charter boats in the world and are prefered by companies all over the world</li>
+									<li>Motor yachts are the most popular type of boat, followed by sailing boats and sport boats</li>
+									<li>The inboard direct drive is the most popular type of propulsion, used largly by motor yachts, followed by outboard engines, used largly by smaller speed boats</li>
+									<li>Germany is the most popular location for boat brokers, followed by Switzerland and Italy. For the fact that Switzerlands does't have access to the sea, this is very impressive</li>
+									<li>Though glass reinforced plastic (GRP) is the most common type of material on a boat, carbon fiber is the most expensive type of boat material</li>
+									<li>Sunseeker manufactures the most expensive yachts, which is not suprising since they manufacture large yachts. Sunseeker is followed by other large boat manufacturers</li>
+									<li>Because of it's high technological dependency, motor yachts are more expensive than sailing yachts in general</li>
+									<li>Price is highly correlated with Length and Width, which makes sense because the boat size is the strongest determining factor of the price</li>
+								</p>
+							<h2>Weaknesses and what can be improved</h2>
+							<p>
+								<li>Dropping more outliers, since the linear regression model performed worse on higher prices and the outliers are skewing the distribution a lot.</li>
+								<li>Using less features in the modelling and maybe dropping the width feature</li>
+								<li>Doing a dimension reduction</li>
+								<li>Hyperparameter tuning with grid search, although majority of the improvement could come from deeper feature reductiom and engineering</li>
+							</p>
+						</div>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<section>
+								<h2>Get in touch</h2>
+								<ul class="icons">
+									<li><a href="https://www.linkedin.com/in/teo-ljubicic/" target="_blank" class="icon brands style2 fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									<li><a href="https://github.com/teolj96" target="_blank" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="mailto:tljubicic96@gmail.com" target="_blank" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+								</ul>
+							</section>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
